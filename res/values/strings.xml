@@ -4,5 +4,39 @@
     <string name="app_name">Blood Bank</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_log_in">Log In</string>
+    <string name="title_activity_home">Home</string>
+    <string name="pref_file">taadnairsshha.apps.preference_file</string>
+    <string name="user_id">User ID</string>
+    <string name="user_name">User Name</string>
+    <string name="user_phone">Phone Number:</string>
+    <string name="user_password">Password:</string>
+    <string name="button_log_in">Log In</string>
+    <string name="title_activity_new_user">Register</string>
+    <string name="fill_details">Please fill in your details.</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string-array name="blood_groups">
+        <item>Blood Group</item>
+        <item>A +ve</item>
+        <item>A -ve</item>
+        <item>B +ve</item>
+        <item>B -ve</item>
+        <item>AB +ve</item>
+        <item>AB -ve</item>
+        <item>O +ve</item>
+        <item>O -ve</item>
+    </string-array>
+    <string name="blood_group">Blood Group</string>
+    <string name="hint_primary_contact">Primary Contact No.</string>
+    <string name="hint_secondary_contact">Secondary Contact No.</string>
+    <string name="hint_address_street">Street</string>
+    <string name="hint_address_neighbourhood">Neighbourhood</string>
+    <string name="hint_address_city">City</string>
+    <string name="hint_address_state">State</string>
+    <string name="register">Register</string>
 
 </resources>
