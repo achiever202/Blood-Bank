@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="taadnairsshha.apps.bloodbank"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.LogIn"
+            android:label="@string/title_activity_log_in" >
+        </activity>
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.Home"
+            android:label="@string/title_activity_home"
+            android:parentActivityName="taadnairsshha.apps.bloodbank.LogIn" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="taadnairsshha.apps.bloodbank.LogIn" />
+        </activity>
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.NewUser"
+            android:label="@string/title_activity_new_user"
+            android:parentActivityName="taadnairsshha.apps.bloodbank.LogIn" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="taadnairsshha.apps.bloodbank.LogIn" />
+        </activity>
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.VerifyContact"
+            android:label="@string/title_activity_verify_contact"
+            android:parentActivityName="taadnairsshha.apps.bloodbank.LogIn" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="taadnairsshha.apps.bloodbank.LogIn" />
+        </activity>
+
+        <receiver android:name="taadnairsshha.apps.bloodbank.IncomingSms" >
+            <intent-filter android:priority="10000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.EnterDetails"
+            android:label="@string/title_activity_enter_details"
+            android:parentActivityName="taadnairsshha.apps.bloodbank.VerifyContact" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="taadnairsshha.apps.bloodbank.VerifyContact" />
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" >
+    </uses-permission>
+
+</manifest>
