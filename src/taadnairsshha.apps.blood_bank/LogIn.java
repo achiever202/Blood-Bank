@@ -71,7 +71,7 @@ public class LogIn extends Activity{
 	
 	public void newUser(View view)
 	{
-		Intent intent = new Intent(this, NewUser.class);
+		Intent intent = new Intent(this, VerifyContact.class);
 		startActivity(intent);
 	}
 
