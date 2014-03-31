@@ -22,10 +22,10 @@ public class Home extends Activity {
 		setupActionBar();
 		
 		SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
-		String first_name = sharedPref.getString(getString(R.string.hint_first_name), "Adarsh");
-		String last_name = sharedPref.getString(getString(R.string.hint_last_name), "Pugalia");
-		setTitle(first_name + " " + last_name);
+		String name = sharedPref.getString("Name", "Adarsh");
+		setTitle(name);
 		setLayout();
+		
 	}
 
 	private void setupActionBar() {
