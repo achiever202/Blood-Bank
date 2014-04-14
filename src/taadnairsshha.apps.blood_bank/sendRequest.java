@@ -28,7 +28,7 @@ public class SendRequest extends AsyncTask<String, Integer, String>
 	    try
 	    {  
 	        DefaultHttpClient httpClient = new DefaultHttpClient();
-	        HttpPost httpPost = new HttpPost("http://http://www.adarsh.comlu.com/"+params[0]);
+	        HttpPost httpPost = new HttpPost("http://www.adarsh.comlu.com/"+params[0]);
 	        
 	        int num = Integer.parseInt(params[1]);
 	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(num);
