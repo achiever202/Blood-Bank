@@ -11,14 +11,14 @@
 		$data=mysql_query($sql);
 		if(!$data)
 		{
-			echo '0';
+			echo '0#';
 			exit();
 		}
 		
 		$data=mysql_fetch_array($data);
 		if($data['num']==0)
 		{
-			echo '0';
+			echo '0#';
 			exit();
 		}
 		
@@ -27,13 +27,13 @@
 		
 		if($encoded['encoded']!=$data['password'])
 		{
-			echo '1';
+			echo '1#';
 		}
 		else
 		{
-			echo $data['name'] . "$" . $data['phone'] . "$" . $data['bloodgroup'] . "$" . $data['city'];
+			echo $data['name'] . "$" . $data['phone'] . "$" . $data['bloodgroup'] . "$" . $data['city']."#";
 		}
 	}
 	else
-		echo '2';
+		echo '2#';
 ?>
