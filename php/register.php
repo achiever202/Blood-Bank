@@ -21,7 +21,7 @@
 		
 		if($num!=0)
 		{
-			echo '0'; // if the user already exists.
+			echo "0#"; // if the user already exists.
 			exit();
 		}
 		
@@ -29,9 +29,9 @@
 		$inserted=mysql_query($sql);
 		
 		if($inserted)
-			echo '1';
+			echo "1#";
 		else
-			echo mysql_error();
+			echo mysql_error() + "#";
 	}
-	else echo '3';
+	else echo "3#";
 ?>
