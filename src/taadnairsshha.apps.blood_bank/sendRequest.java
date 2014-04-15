@@ -55,7 +55,8 @@ public class SendRequest extends AsyncTask<String, Integer, String>
 	    {
 	        line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
 	    }
-	    return line;
+	    String[] value = line.split("#");
+	    return value[0];
 	}
 	
 	@Override
