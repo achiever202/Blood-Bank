@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="12"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <application
@@ -13,6 +13,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        
+        <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
+        
         <activity
             android:name="taadnairsshha.apps.bloodbank.MainActivity"
             android:label="@string/app_name" >
@@ -52,7 +57,7 @@
         </activity>
 
         <receiver android:name="taadnairsshha.apps.bloodbank.IncomingSms" >
-            <intent-filter android:priority="10000">
+            <intent-filter android:priority="10000" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
@@ -65,12 +70,43 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="taadnairsshha.apps.bloodbank.VerifyContact" />
         </activity>
+        <activity
+            android:name="taadnairsshha.apps.bloodbank.AskBlood"
+            android:label="@string/title_activity_ask_blood"
+            android:parentActivityName="taadnairsshha.apps.bloodbank.Home" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="taadnairsshha.apps.bloodbank.Home" />
+        </activity>
+        
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+ 
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+ 
+                <category android:name="taadnairsshha.apps.bloodbank" />
+            </intent-filter>
+        </receiver>
+ 
+        <service android:name=".GCMIntentService" />
+        
     </application>
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" >
-    </uses-permission>
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <permission android:name="taadnairsshha.apps.bloodbank.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="taadnairsshha.apps.bloodbank.permission.C2D_MESSAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
