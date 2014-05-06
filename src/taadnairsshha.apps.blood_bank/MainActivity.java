@@ -1,5 +1,8 @@
 package taadnairsshha.apps.bloodbank;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity 
 {
-
+	
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -23,12 +26,14 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// Toast for tapping
 		Toast.makeText(getApplicationContext(), "Tap to Continue", Toast.LENGTH_SHORT).show();
 	}
 	
+	// Function called when the user taps on the screen.
 	public void check(View view)
 	{
-		// creating a shared preference object.
+		// getting the shared preference object.
 		SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
 		
 		// if the shared preference file exists, that is user is registered.
@@ -39,13 +44,14 @@ public class MainActivity extends Activity
 			startActivity(intent);
 		}
 		
-		// else forwarding the user to the log in page.
+		// else forwarding the user to the log in/registration page.
 		else
 		{
 			Intent intent = new Intent(this, LogIn.class);
 			startActivity(intent);
 		}
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
