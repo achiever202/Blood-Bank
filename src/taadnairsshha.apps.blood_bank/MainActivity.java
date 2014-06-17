@@ -26,25 +26,25 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// Toast for tapping
+		// Toast to intimate user for tapping.
 		Toast.makeText(getApplicationContext(), "Tap to Continue", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Function called when the user taps on the screen.
 	public void check(View view)
 	{
-		// getting the shared preference object.
+		// Getting the shared preference object.
 		SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
 		
-		// if the shared preference file exists, that is user is registered.
-		// forwarding to the home screen.
+		// If the shared preference file exists, it means the user is registered.
+		// Starting the Home Activity.
 		if(sharedPref.contains("Phone"))
 		{
 			Intent intent = new Intent(this, Home.class);
 			startActivity(intent);
 		}
 		
-		// else forwarding the user to the log in/registration page.
+		// Else forwarding the user to the log in/registration .
 		else
 		{
 			Intent intent = new Intent(this, LogIn.class);
