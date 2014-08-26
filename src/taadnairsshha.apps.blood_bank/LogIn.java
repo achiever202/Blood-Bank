@@ -1,3 +1,8 @@
+/*
+ * This activity lets the user to LogIn if he is already registered.
+ * It also lets the unregistered user create a new profile.
+ */
+
 package taadnairsshha.apps.bloodbank;
 
 import java.io.IOException;
@@ -27,21 +32,20 @@ public class LogIn extends Activity{
 
 	PublicVariables var;
 	
-	/*
-	 * isPlay
-	 * connection to check if the device is connected.
-	 */
+	// Variables for GCM
 	public boolean isPlay = false;
 	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
-    public ProgressDialog dialog = null;
-    public InternetConnection connection = null;
-    
     String SENDER_ID = "716092216952";
     GoogleCloudMessaging gcm;
     AtomicInteger msg_id = new AtomicInteger();
+    
+    
+    public ProgressDialog dialog = null;
+    public InternetConnection connection = null;
+    
     SharedPreferences prefs;
     Context context;
     String reg_id = null;
@@ -51,7 +55,7 @@ public class LogIn extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_log_in);
 		
-		// getting the context of the application.
+		// Getting the context of the application.
 		context = getApplicationContext();
 		
 		// Checking if the device is connected.
@@ -121,17 +125,20 @@ public class LogIn extends Activity{
 				else
 					text = "Please enter Password!";
 				
-				int duration = Toast.LENGTH_SHORT;
-				
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 			}
-			else if(phone.length()==13)
+			
+			// Checking for 10-digit mobile number
+			else if(phone.length()==10)
 			{
+				// Prepending "+91" to the phone number.
+				phone = "+91"+phone;
 				try
 				{
+					// Sending the query to the server.
 					String reply = new SendRequest().execute("login.php", "3", "Id", id, "Phone", phone, "Password", password).get();
 					
+					// 000Webhost.com appends random data at the end! :(
 					String[] split = reply.split("#");
 					reply = split[0];
 					
@@ -187,12 +194,12 @@ public class LogIn extends Activity{
 	// Function that checks if play services are available.
 	private boolean checkPlayServices()
 	{
-		int result_code = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-		if(result_code!=ConnectionResult.SUCCESS)
+		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+		if(resultCode!=ConnectionResult.SUCCESS)
 		{
-			if(GooglePlayServicesUtil.isUserRecoverableError(result_code))
+			if(GooglePlayServicesUtil.isUserRecoverableError(resultCode))
 			{
-				GooglePlayServicesUtil.getErrorDialog(result_code, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
+				GooglePlayServicesUtil.getErrorDialog(resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
 			}
 			else
 			{
