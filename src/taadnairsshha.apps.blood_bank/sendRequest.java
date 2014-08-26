@@ -1,3 +1,8 @@
+/*
+ * This class is used to send requests to the server.
+ * The function sendRequest sends the request to the php server.
+ */
+
 package taadnairsshha.apps.bloodbank;
 
 import java.io.IOException;
@@ -27,15 +32,19 @@ public class SendRequest extends AsyncTask<String, Integer, String>
 	    String line;
 	    try
 	    {  
+	    	// making a http client for a http request.
 	        DefaultHttpClient httpClient = new DefaultHttpClient();
 	        HttpPost httpPost = new HttpPost("http://www.adarsh.comlu.com/"+params[0]);
 	        
+	        // params[1] stores the number dentoing the number of parameters.
 	        int num = Integer.parseInt(params[1]);
-	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(num);
 	        
+	        // Making name value pairs from the parameters for http request.
+	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(num);
 	        for(int i=2; i<(num*2)+2; i=i+2)
 	        	nameValuePairs.add(new BasicNameValuePair(params[i], params[i+1]));
 			
+	        // Making the http request.
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 	        HttpResponse httpResponse = httpClient.execute(httpPost);
 	        
@@ -55,8 +64,9 @@ public class SendRequest extends AsyncTask<String, Integer, String>
 	    {
 	        line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
 	    }
-	    String[] value = line.split("#");
-	    return value[0];
+	    //String[] value = line.split("#");
+	    //return value[1];
+	    return line;
 	}
 	
 	@Override
