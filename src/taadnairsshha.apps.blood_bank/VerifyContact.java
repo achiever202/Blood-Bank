@@ -1,6 +1,13 @@
+/*
+ * This activity is for verifying the phone number of the user.
+ * It asks the user for the phone number.
+ * It then sends a message at the same number, the user entered and thus verifies it.
+ */
+
 package taadnairsshha.apps.bloodbank;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NavUtils;
@@ -14,6 +21,7 @@ import android.widget.Toast;
 
 public class VerifyContact extends Activity {
 
+	public final static String EXTRA_MESSAGE = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,13 +64,15 @@ public class VerifyContact extends Activity {
 	}
 	
 	public void sendSMS(View view)
-	{
+	{	
 		String message = "";
 		TextView text = (TextView) findViewById(R.id.text_error);
 		text.setText(message);
 		
+		// Getting the phone number from the text view
 		EditText edit = (EditText)findViewById(R.id.edit_phone);
 		String phone_number = edit.getText().toString();
+		
 		if(phone_number.length()==10)
 		{
 			SmsManager sms = SmsManager.getDefault();
@@ -76,9 +86,10 @@ public class VerifyContact extends Activity {
 				
 				public void onFinish()
 				{
-					String message = "Your number could not be verified.\nPlease check your number and try again.";
+					Toast.makeText(getApplicationContext(), "Your number could not be verified.\nPlease check your number and try again.", Toast.LENGTH_SHORT).show();
+					/*String message = "Your number could not be verified.\nPlease check your number and try again.";
 					TextView text = (TextView) findViewById(R.id.text_error);
-					text.setText(message);
+					text.setText(message);*/
 				}
 			}.start();
 		}
