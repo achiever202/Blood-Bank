@@ -1,3 +1,7 @@
+/* 
+ * This activity just displays the wallpaper.
+ * Tapping on the screen opens the first activity.
+ */
 package taadnairsshha.apps.bloodbank;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -16,13 +20,15 @@ public class MainActivity extends Activity
 {
 	
 	@Override
-	protected void onPause() {
+	protected void onPause()
+	{
 		super.onPause();
 		finish();
 	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
@@ -54,7 +60,8 @@ public class MainActivity extends Activity
 	
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
