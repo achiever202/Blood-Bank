@@ -30,6 +30,7 @@
         android:layout_height="0dp"
         android:layout_below="@id/divider1"
         android:text="@string/donate"
+        android:clickable="true"
         android:onClick="donateBlood"
         android:gravity="center_vertical" />
     
@@ -46,7 +47,8 @@
         android:layout_height="0dp"
         android:layout_below="@id/divider2"
         android:text="@string/profile"
-        android:onClick="donateBlood"
+        android:clickable="true"
+        android:onClick="editProfile"
         android:gravity="center_vertical" />
     
     <TextView

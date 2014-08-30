@@ -109,7 +109,7 @@
 	    android:layout_below="@id/edit_address_neighbourhood"
 	    android:layout_height="wrap_content"
 	    android:layout_width="0dp"
-	    android:hint="@string/hint_address_city"
+	    android:hint="@string/hint_city"
 	    android:inputType="text" >
 	    <requestFocus />
 	</EditText>
