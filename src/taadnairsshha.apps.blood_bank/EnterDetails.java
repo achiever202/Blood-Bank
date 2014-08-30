@@ -132,13 +132,20 @@ public class EnterDetails extends Activity {
 		edit = (EditText)findViewById(R.id.edit_city);
 		String city = edit.getText().toString();
 		
+		SharedPreferences prefs = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
+		String id = prefs.getString("registration_id", "");
+		
 		if(name.equals("") || password.equals("") || blood_group.equals("") || city.equals(""))
 			Toast.makeText(getApplicationContext(), "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
 		else
 		{
 			try
 			{
-				String reply = new SendRequest().execute("register.php", "5", "Phone", phone, "Name", name, "Password", password, "BloodGroup", blood_group, "City", city).get();
+				String reply = new SendRequest().execute("register.php", "6", "Id", id, "Phone", phone, "Name", name, "Password", password, "BloodGroup", blood_group, "City", city).get();
+				//Toast.makeText(getApplicationContext(), reply, Toast.LENGTH_LONG).show();
+				
+				String[] split = reply.split("#");
+				reply = split[0];
 				
 				if(reply.equals("0"))
 				{

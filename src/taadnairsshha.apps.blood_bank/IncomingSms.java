@@ -33,24 +33,9 @@ public class IncomingSms extends BroadcastReceiver {
                     String phoneNumber = currentMessage.getDisplayOriginatingAddress();
                     
                     String senderNum = phoneNumber;
-                    String message = currentMessage.getDisplayMessageBody();
-
-                    int ctr = 0;
-                    if(senderNum.length()!=message.length())
-                    	ctr = 1;
-                    else
-                    {
-                    	int j;
-                    	for(j=0; j<senderNum.length(); j++)
-                    		if(senderNum.charAt(j)!=message.charAt(j))
-                    			break;
-                    	
-                    	if(j!=senderNum.length())
-                    		ctr = 1;
-                    }
+                    String message = currentMessage.getDisplayMessageBody();                    
                     
-                    
-                    if(ctr==0)
+                    if(senderNum.equals(message))
                     {
                     	abortBroadcast();
                     	Intent new_intent = new Intent(context, EnterDetails.class);
@@ -60,8 +45,8 @@ public class IncomingSms extends BroadcastReceiver {
                     }
                     else
                     {
-                    	Toast.makeText(context, "Phone number wasnt verified!.", Toast.LENGTH_SHORT).show();
-                    	Toast.makeText(context, "Please enter the correct number!.", Toast.LENGTH_SHORT).show();
+                    	Toast.makeText(context, "Phone number wasnt verified!", Toast.LENGTH_SHORT).show();
+                    	Toast.makeText(context, "Please enter the correct number!", Toast.LENGTH_SHORT).show();
                     	
                     }
                     

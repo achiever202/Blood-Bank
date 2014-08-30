@@ -2,6 +2,7 @@ package taadnairsshha.apps.bloodbank;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -10,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class Home extends Activity {
 
@@ -18,11 +18,11 @@ public class Home extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		// Show the Up button in the action bar..
+		// Show the Up button in the action bar.
 		setupActionBar();
 		
 		SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_file), Context.MODE_PRIVATE);
-		String name = sharedPref.getString("Name", "Adarsh");
+		String name = sharedPref.getString("Name", "");
 		setTitle(name);
 		setLayout();
 		
@@ -60,15 +60,20 @@ public class Home extends Activity {
 	
 	public void askBlood(View view)
 	{
-		Context context = getApplicationContext();
-		String text = "Coming Soon!";
-		int duration = Toast.LENGTH_SHORT;
-		Toast.makeText(context, text, duration).show();
+		Intent intent = new Intent(this, AskBlood.class);
+		startActivity(intent);
 	}
 	
 	public void donateBlood(View view)
 	{
-		askBlood(view);
+		Intent intent = new Intent(this, DonateBlood.class);
+		startActivity(intent);
+	}
+	
+	public void editProfile(View view)
+	{
+		Intent intent = new Intent(this, EditProfile.class);
+		startActivity(intent);
 	}
 	
 	public void setLayout()
